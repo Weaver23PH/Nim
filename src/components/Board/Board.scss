@@ -1,0 +1,18 @@
+div.Board_main {
+    height: 75%;
+    width: 75%;
+    border: 1px solid black;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: peachpuff; 
+}
+div.Board_row{
+    width: 98%;
+    height: 23%;
+    margin: 1%;
+    border: 1px solid green;
+}
