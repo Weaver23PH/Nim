@@ -7,9 +7,12 @@ class Token extends React.Component {
     componentDidMount() {
         $(ReactDOM.findDOMNode(this)).draggable();
     };
+
+
+ 
     render() {
         return (
-            <div className={styles.Token}></div>
+            <div className={styles.Token} ></div>
 
         )
     }

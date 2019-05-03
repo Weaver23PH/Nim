@@ -7,7 +7,7 @@ class Board extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            tokens_1: [null, null, null, <Token id= {this.nextId}/>, null, null, null],
+            tokens_1: [null, null, null, <Token key={this.nextId}/>, null, null, null],
             tokens_2: [null, null, <Token/>, <Token/>, <Token/>, null, null],
             tokens_3: [null, <Token/>, <Token/>, <Token/>, <Token/>, <Token/>, null],
             tokens_4: [<Token/>, <Token/>, <Token/>, <Token/>, <Token/>, <Token/>, <Token/>]
