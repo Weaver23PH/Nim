@@ -50,7 +50,6 @@
   },
   "homepage": "",
   "dependencies": {
-    "0": "0.0.0",
     "antd": "^3.0.3",
     "less": "^3.8.1"
   }

@@ -2,6 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from "./Board.scss";
 import Token from "../Token/Token";
+import { GameState, Player, playRound, remainderStrategy, startGame } from '@luchsamapparat/nim';
+
+const gameState: GameState = startGame({
+    heapSize: 13,
+    minTokensToRemove: 1,
+    maxTokensToRemove: 3,
+    startingPlayer: Player.Human,
+    strategy: remainderStrategy()
+});
 
 class Board extends React.Component {
     constructor(props) {
