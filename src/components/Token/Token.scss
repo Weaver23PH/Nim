@@ -2,6 +2,13 @@ div.Token{
     height: 100px;
     width: 100px;
     background-color: blue;
-    border: 1px solid red;
     margin: auto;
+    border-radius: 15%;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    &:hover{
+        background-color: darkblue;
+    }
 }

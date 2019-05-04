@@ -8,18 +8,24 @@ div.Board_main {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    background-color: peachpuff; 
+    background-color: peachpuff;
 }
-div.Board_row{
+
+div.Board_row {
     width: 98%;
     height: 23%;
     margin: 1%;
-    border: 1px solid green;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
     display: flex;
     flex-direction: row;
+    border-radius: 5%;
 }
-div.Board_menu{
+
+div.Board_menu {
     position: absolute;
-    bottom:-24px;
+    bottom: -24px;
     right: 33%;
 }
