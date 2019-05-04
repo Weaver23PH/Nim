@@ -17,7 +17,13 @@ class Board extends React.Component {
     }
 
     handleTokenClick = (event) => {
-        console.log(event.target + " it's me!");
+        let array = this.state.board;
+        let rowInd = event.target.index;
+        let tokenId = event.target.key;
+        array[rowInd].splice(tokenId, 1);
+        this.setState({
+            board: array
+        })
     }
 
 
@@ -37,10 +43,10 @@ class Board extends React.Component {
             for (let i = 0; i < rows; i++) {
                 let innerArr = [];
                 for (let j = 0; j < (i * 2 + 1); j++) {
-                    let key = (Math.random() * i + j);
-                    innerArr.push(<Token key={key} onClick={(event) => this.handleTokenClick(event)} />);
+                    let keyVal = this.nextId();
+                    innerArr.push(<Token key={keyVal} rowIndex={i} index={keyVal} onClick={(event) => this.handleTokenClick(event)} />);
                 }
-                boardArr.push(<div className={styles.Board_row} key={i + "_row"}>{innerArr}</div>)
+                boardArr.push(<div className={styles.Board_row} key={i}>{innerArr}</div>)
             }
 
             this.setState({
@@ -65,7 +71,7 @@ class Board extends React.Component {
                         <button type="submit" onClick={(event) => this.board(event)}>Build board</button>
                     </div>
                 </form>}
-                {this.state.board}
+                {this.state.board.length>0 && this.state.board}
             </div>
         )
     }
