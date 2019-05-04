@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/webpack",
-    "start": " ./node_modules/.bin/webpack-dev-server --watch"
+    "start": " ./node_modules/.bin/webpack-dev-server --watch --hot"
   },
   "author": "Weaver23PH",
   "license": "ISC",

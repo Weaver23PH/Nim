@@ -8,7 +8,8 @@ class Board extends React.Component {
         super();
         this.state = {
             rowNum: 0,
-            board: []
+            board: [],
+            tokens: []
         }
     }
     nextId() {
@@ -16,14 +17,16 @@ class Board extends React.Component {
         return this.uniqueId++;
     }
 
-    handleTokenClick = (event,rowIndex, index)=> {
+    handleTokenClick = (rowIndex, index) => {
         let array = this.state.board;
+        console.log(array[0][0]);
         let rowInd = rowIndex;
-        let tokenId = index;
-        array[rowInd].splice(tokenId, 1);
-        this.setState({
-            board: array
-        })
+        let tokenInd = index;
+        console.log(array[rowInd][tokenInd]);
+        array[rowInd].
+            this.setState({
+                board: array
+            })
     }
 
 
@@ -40,18 +43,26 @@ class Board extends React.Component {
 
         if (rows <= 5) {
             let boardArr = [];
-            for (let i = 0; i < rows; i++) {
-                let innerArr = [];
-                for (let j = 0; j < (i * 2 + 1); j++) {
-                    let keyVal = this.nextId();
-                    innerArr.push(<Token key={keyVal} rowIndex={i} index={keyVal} onClick={(event, rowIndex, index) => this.handleTokenClick(event, rowIndex, index)} />);
+            if (this.state.tokens.length == 0){
+                for (let i = 0; i < rows; i++) {
+                    let innerArr = [];
+                    for (let j = 0; j < (i * 2 + 1); j++) {
+                        let keyVal = this.nextId();
+                        innerArr.push(<Token key={keyVal} rowIndex={i} index={keyVal} onClick={(rowIndex, index) => this.handleTokenClick(rowIndex, index)} />);
+                        this.setState({
+                            tokens: [...innerArr]
+                        },
+                            () => {
+                                console.log("tokens updated" + this.state.tokens)
+                            })
+                    }
+                    let array = this.state.tokens;
+                    boardArr.push(<div className={styles.Board_row} key={i}>{innerArr}</div>)
                 }
-                boardArr.push(<div className={styles.Board_row} key={i}>{innerArr}</div>)
+                        this.setState({
+                            board: [...boardArr]
+                        });
             }
-
-            this.setState({
-                board: [...boardArr]
-            });
         }
         else {
             alert("Five rows is enough!");
@@ -71,7 +82,7 @@ class Board extends React.Component {
                         <button type="submit" onClick={(event) => this.board(event)}>Build board</button>
                     </div>
                 </form>}
-                {this.state.board.length>0 && this.state.board}
+                {this.state.board.length > 0 && this.state.board}
             </div>
         )
     }
