@@ -26,24 +26,31 @@ class Board extends React.Component {
         })
     };
 
-    board = (rows) => {
+    board(rows){
+        if (rows <=5){
         let boardArr = [];
         let i;
         for (i = 0; i < rows; i++) {
             let innerArr = [];
             for (let j = 0; j < (i * 2 + 1); j++) {
-                innerArr.push(<Token key={i+j} />);
+                innerArr.push(<Token key={i*j} />);
             }
             boardArr.push(<div className={styles.Board_row} key={i + "_row"}>{innerArr}</div>)
         }
-        console.log(boardArr);
-        this.state.board = boardArr;
+
+        this.state.board = boardArr;}
+        else {
+            alert("Five rows is enough!");
+            this.setState({
+                rowNum : 0
+            });
+        }
     }
 
     render() {
         return (
             <div className={styles.Board_main}>
-                <div><label>How many rows?
+                <div className={styles.Board_menu}><label>How many rows?
     <input type="number" placeholder="number of rows" name="rowNum" value={this.state.rowNum} onChange={(event) => this.handleChange(event)}></input>
                 </label>
                     <button onClick={this.board(this.state.rowNum)}>Build board</button>

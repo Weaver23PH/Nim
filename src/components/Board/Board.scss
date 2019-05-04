@@ -1,9 +1,9 @@
 div.Board_main {
-    height: 75%;
+    position: relative;
+    height: 90%;
     width: 75%;
     border: 1px solid black;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin: 1%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,4 +17,9 @@ div.Board_row{
     border: 1px solid green;
     display: flex;
     flex-direction: row;
+}
+div.Board_menu{
+    position: absolute;
+    bottom:-24px;
+    right: 33%;
 }
