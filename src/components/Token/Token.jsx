@@ -13,9 +13,12 @@ class Token extends React.Component {
             index: this.props.index
         }
     }
+    onClick= ()=>{
+        this.props.onClick(this.state.rowIndex, this.state.index);
+    }
     render() {
         return (
-            <div className={styles.Token} onClick={this.props.onClick}></div>
+            <div className={styles.Token} onClick={this.onClick}></div>
         )
     }
 
