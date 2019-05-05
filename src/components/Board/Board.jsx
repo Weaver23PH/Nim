@@ -13,6 +13,10 @@ class Board extends React.Component {
             boardMem: []
         }
     }
+
+    // shouldComponentUpdate(){
+    //     this.boardRebuild();
+    // }
     nextId() {
         this.uniqueId = this.uniqueId || 0;
         return this.uniqueId++;
@@ -22,11 +26,12 @@ class Board extends React.Component {
         let array = this.state.boardMem;
         let rowInd = rowIndex;
         let tokenInd = index;
-        console.log(array[rowInd][tokenInd]);
-        array[rowInd].splice(tokenInd,1);
-        this.setState({
-            boardMem: array
-        })
+        if (tokenInd !=(array[rowInd].length - 1)){
+            alert("Always remove from the right!")
+        }else {
+            array[rowInd].splice(tokenInd, 1);
+            this.boardRebuild(array);
+        }
     }
 
 
@@ -55,6 +60,19 @@ class Board extends React.Component {
             });
         }
     }
+    boardRebuild = (array) => {
+        let rows = array.length;
+        let boardArr = [];
+        for (let i = 0; i < rows; i++) {
+            let innerArr = array[i];
+            boardArr.push(<div className={styles.Board_row} key={i}>{innerArr}</div>)
+        }
+        this.setState({
+            board: boardArr,
+            boardMem: array
+        });
+
+    }
     tokenBuild = (i, array) => {
         for (let j = 0; j < (i * 2 + 1); j++) {
             let keyVal = this.nextId();
@@ -77,7 +95,7 @@ class Board extends React.Component {
                         <button type="submit" onClick={(event) => this.boardBuild(event)}>Build board</button>
                     </div>
                 </form>}
-                {this.state.board.length > 0 && this.state.board}
+                {this.state.board}
             </div>
         )
     }
