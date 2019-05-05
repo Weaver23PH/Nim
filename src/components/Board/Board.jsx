@@ -40,10 +40,9 @@ class Board extends React.Component {
     board = (event) => {
         event.preventDefault();
         let rows = parseInt(this.state.rowNum);
-
         if (rows <= 5) {
             let boardArr = [];
-            if (this.state.tokens.length == 0){
+            if (this.state.tokens.length == 0) {
                 for (let i = 0; i < rows; i++) {
                     let innerArr = [];
                     for (let j = 0; j < (i * 2 + 1); j++) {
@@ -51,24 +50,15 @@ class Board extends React.Component {
                         innerArr.push(<Token key={keyVal} rowIndex={i} index={keyVal} onClick={(rowIndex, index) => this.handleTokenClick(rowIndex, index)} />);
                         this.setState({
                             tokens: [...innerArr]
-                        },
-                            () => {
-                                console.log("tokens updated" + this.state.tokens)
-                            })
+                        })
                     }
                     let array = this.state.tokens;
                     boardArr.push(<div className={styles.Board_row} key={i}>{innerArr}</div>)
                 }
-                        this.setState({
-                            board: [...boardArr]
-                        });
+                this.setState({
+                    board: [...boardArr]
+                });
             }
-        }
-        else {
-            alert("Five rows is enough!");
-            this.setState({
-                rowNum: 5
-            });
         }
     }
 
@@ -77,7 +67,9 @@ class Board extends React.Component {
             <div className={styles.Board_main}>
                 {this.state.board.length == 0 && <form>
                     <div className={styles.Board_menu}><label>How many rows?
-    <input type="number" placeholder="number of rows" name="rowNum" value={this.state.rowNum} onChange={(event) => this.handleChange(event)}></input>
+    <input type="radio" name="rowNum3" value={3} onChange={(event) => this.handleChange(event)}></input><label>3</label>
+                        <input type="radio" name="rowNum4" value={4} onChange={(event) => this.handleChange(event)}></input><label>4</label>
+                        <input type="radio" name="rowNum5" value={5} onChange={(event) => this.handleChange(event)}></input><label>5</label>
                     </label>
                         <button type="submit" onClick={(event) => this.board(event)}>Build board</button>
                     </div>
