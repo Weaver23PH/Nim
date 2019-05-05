@@ -10,7 +10,8 @@ class Board extends React.Component {
             rowNum: 0,
             board: [],
             tokens: [],
-            boardMem: []
+            boardMem: [],
+            selected: "3"
         }
     }
 
@@ -26,9 +27,9 @@ class Board extends React.Component {
         let array = this.state.boardMem;
         let rowInd = rowIndex;
         let tokenInd = index;
-        if (tokenInd !=(array[rowInd].length - 1)){
+        if (tokenInd != (array[rowInd].length - 1)) {
             alert("Always remove from the right!")
-        }else {
+        } else {
             array[rowInd].splice(tokenInd, 1);
             this.boardRebuild(array);
         }
@@ -38,7 +39,8 @@ class Board extends React.Component {
     handleChange = (event) => {
         let value = event.target.value;
         this.setState(prevState => ({
-            rowNum: prevState.rowNum >= 0 ? value : 0
+            rowNum: value,
+            selected: value
         }))
     };
 
@@ -88,9 +90,9 @@ class Board extends React.Component {
             <div className={styles.Board_main}>
                 {this.state.board.length == 0 && <form>
                     <div className={styles.Board_menu}><label>How many rows?
-    <input type="radio" name="rowNum3" value={3} onChange={(event) => this.handleChange(event)}></input><label>3</label>
-                        <input type="radio" name="rowNum4" value={4} onChange={(event) => this.handleChange(event)}></input><label>4</label>
-                        <input type="radio" name="rowNum5" value={5} onChange={(event) => this.handleChange(event)}></input><label>5</label>
+    <input type="radio" name="rowNum3" value={3} checked={this.state.selected=="3"} onChange={(event) => this.handleChange(event)}></input><label>3</label>
+                        <input type="radio" name="rowNum4" value={4} checked={this.state.selected=="4"} onChange={(event) => this.handleChange(event)}></input><label>4</label>
+                        <input type="radio" name="rowNum5" value={5} checked={this.state.selected=="5"} onChange={(event) => this.handleChange(event)}></input><label>5</label>
                     </label>
                         <button type="submit" onClick={(event) => this.boardBuild(event)}>Build board</button>
                     </div>
