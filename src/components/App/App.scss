@@ -36,4 +36,8 @@ div.App{
   align-content: center;
   justify-items: center;
   margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  background: url("./images/wood.png") repeat;
+  box-shadow:  15px 15px 25px -8px rgba(0, 0, 0, 0.75);
 }
