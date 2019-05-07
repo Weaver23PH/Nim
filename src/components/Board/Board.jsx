@@ -22,7 +22,6 @@ class Board extends React.Component {
 
     handleTokenClick = (rowIndex, index) => {
         let me = event.target;
-        console.log($(me).parent().siblings());
         $(me).parent().siblings().css("pointer-events", "none");
         let array = this.state.boardMem;
         let rowInd = rowIndex;
@@ -72,11 +71,18 @@ class Board extends React.Component {
             let innerArr = array[i];
             boardArr.push(<div className={styles.Board_row} key={i}>{innerArr}</div>)
         }
+                // for(let i= 0;i<this.state.boardMem.length;i++){
+                //     if(this.state.boardMem[i].length == 0){
+                //         this.state.boardMem.splice(this.state.boardMem[i], 1);
+                //         if (this.state.boardMem.length == 0) {
+                //             alert("Game over! You lost!")
+                //         }
+                //     }
+                // }
         this.setState({
             board: boardArr,
             boardMem: array
         });
-
     }
     tokenBuild = (i, array) => {
         for (let j = 0; j < (i * 2 + 1); j++) {
@@ -91,16 +97,21 @@ class Board extends React.Component {
     render() {
         return (
             <div className={styles.Board_main}>
-                {this.state.board.length == 0 && <form>
-                    <div className={styles.Board_menu}>
-                        <label>How many rows?
-                            <input type="radio" name="rowNum3" value={3} checked={this.state.selected == "3"} onChange={(event) => this.handleChange(event)}></input><label> 3 </label>
-                            <input type="radio" name="rowNum4" value={4} checked={this.state.selected == "4"} onChange={(event) => this.handleChange(event)}></input><label> 4 </label>
-                            <input type="radio" name="rowNum5" value={5} checked={this.state.selected == "5"} onChange={(event) => this.handleChange(event)}></input><label> 5 </label>
-                        </label>
-                        <button type="submit" onClick={(event) => this.boardBuild(event)}>Build board</button>
+                {this.state.board.length == 0 && <div>
+                    <div className={styles.depth}>
+                        <p>Take as many tokens from one pile as You want.</p><br />
+                        <p>Whoever takes the last one, loses.</p><br />
                     </div>
-                </form>}
+                    <form>
+                        <div className={styles.Board_menu}>
+                            <label>How many rows?
+                            <input type="radio" name="rowNum3" value={3} checked={this.state.selected == "3"} onChange={(event) => this.handleChange(event)}></input><label> 3 </label>
+                                <input type="radio" name="rowNum4" value={4} checked={this.state.selected == "4"} onChange={(event) => this.handleChange(event)}></input><label> 4 </label>
+                                <input type="radio" name="rowNum5" value={5} checked={this.state.selected == "5"} onChange={(event) => this.handleChange(event)}></input><label> 5 </label>
+                            </label>
+                            <button type="submit" onClick={(event) => this.boardBuild(event)}>Build board</button>
+                        </div>
+                    </form></div>}
                 <div className={styles.row_wrapper}>{this.state.board}</div>
                 {this.state.board.length != 0 && <div className={styles.Board_menu}><button onClick={(event) => this.releaseRow(event)}>End of turn</button></div>}
             </div>
