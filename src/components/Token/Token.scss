@@ -5,12 +5,10 @@ div.Token {
     background: radial-gradient(ellipse at center, #7db9e8 0%, #2989d8 50%, #1e5799 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     margin: auto;
-    border-radius: 40%;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    border-right:1px solid blue;
-    border-bottom: 1px solid blue;
-    box-shadow: 21px 15px 30px 14px rgba(0,0,0,0.75);
+    border-radius: 50%;
+    border-right:2px solid blue;
+    border-bottom: 2px solid blue;
+    box-shadow: 20px 15px 30px 15px rgba(0,0,0,0.75);
 
     &:hover {
         background-color: darkblue;
