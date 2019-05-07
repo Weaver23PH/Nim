@@ -1,14 +1,17 @@
-div.Token{
+div.Token {
     height: 100px;
     width: 100px;
-    background-color: blue;
+    background: #7db9e8; /* Old browsers */
+    background: radial-gradient(ellipse at center, #7db9e8 0%, #2989d8 50%, #1e5799 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     margin: auto;
-    border-radius: 15%;
-    border-top: 2px solid white;
-    border-left: 2px solid white;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
-    &:hover{
+    border-radius: 40%;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+
+    &:hover {
         background-color: darkblue;
     }
 }
