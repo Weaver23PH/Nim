@@ -1,4 +1,5 @@
 div.Token {
+
     height: 100px;
     width: 100px;
     background: #7db9e8; /* Old browsers */
@@ -11,6 +12,6 @@ div.Token {
     box-shadow: 20px 15px 30px 15px rgba(0,0,0,0.75);
 
     &:hover {
-        background-color: darkblue;
+     transform: scale(1.15) translate(0px, -25px);
     }
 }
